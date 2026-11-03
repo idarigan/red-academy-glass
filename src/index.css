@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import "dara-ui/style.css";
+
+/* =============================================
+   RED ACADEMY THEME (light / dark only)
+   ============================================= */
+
+:root,
+[data-theme="light"] {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f7f7f8;
+  --color-bg-tertiary: #efeff1;
+  --color-bg-elevated: #ffffff;
+
+  --color-text-primary: #17171a;
+  --color-text-secondary: #4b4b52;
+  --color-text-tertiary: #7a7a83;
+
+  --color-border-primary: #e3e3e6;
+  --color-border-secondary: #ededf0;
+
+  --color-primary: #d20a2e;
+  --color-primary-solid: #d20a2e;
+  --color-primary-hover: #b80927;
+  --color-primary-active: #9e0821;
+  --color-primary-light: rgba(210, 10, 46, 0.1);
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --color-bg-primary: #0d0d0f;
+  --color-bg-secondary: #151518;
+  --color-bg-tertiary: #1c1c20;
+  --color-bg-elevated: #232328;
+
+  --color-text-primary: #f2f2f4;
+  --color-text-secondary: #b4b4bd;
+  --color-text-tertiary: #85858f;
+
+  --color-border-primary: #2a2a30;
+  --color-border-secondary: #222227;
+
+  --color-primary: #f03456;
+  --color-primary-solid: #d20a2e;
+  --color-primary-hover: #e0143a;
+  --color-primary-active: #b80927;
+  --color-primary-light: rgba(240, 52, 86, 0.12);
+
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* =============================================
+   RTL BASE
+   ============================================= */
+
+html {
+  direction: rtl;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
