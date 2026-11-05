@@ -1,23 +1,26 @@
 <!doctype html>
-<html lang="fa" dir="rtl" data-theme="light">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>آکادمی رد | Red Academy</title>
-    <link
-      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
-      rel="stylesheet"
-    />
     <script>
       (function () {
         try {
           var saved = localStorage.getItem("dara-ui-theme");
-          if (saved === "light" || saved === "dark") {
-            document.documentElement.setAttribute("data-theme", saved);
-          }
-        } catch (_) {}
+          document.documentElement.setAttribute(
+            "data-theme",
+            saved === "dark" ? "dark" : "light",
+          );
+        } catch (_) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
       })();
     </script>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>

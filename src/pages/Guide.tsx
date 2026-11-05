@@ -1,4 +1,5 @@
-import { Tabs, Card, Accordion } from "dara-ui";
+import { useState } from "react";
+import { Card, Accordion } from "dara-ui";
 
 /* =============================================
    CONTENT DATA
@@ -86,10 +87,23 @@ const POLICY_ITEMS = [
 ];
 
 /* =============================================
+   TAB BUTTON
+   ============================================= */
+
+const TABS = [
+  { value: "guide", label: "راهنمای ثبت‌نام" },
+  { value: "policy", label: "قوانین و سیاست‌ها" },
+] as const;
+
+type TabValue = (typeof TABS)[number]["value"];
+
+/* =============================================
    PAGE
    ============================================= */
 
 export default function Guide() {
+  const [tab, setTab] = useState<TabValue>("guide");
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
       {/* HEADER */}
@@ -102,46 +116,53 @@ export default function Guide() {
         </p>
       </header>
 
-      {/* TABS — wrapper carries padding so glows are not clipped */}
-      <div className="px-2 pb-6">
-        <Tabs
-          items={[
-            {
-              label: "راهنمای ثبت‌نام",
-              value: "guide",
-              content: (
-                <div className="flex flex-col gap-6 pt-6 pb-4">
-                  {GUIDE_STEPS.map((s, i) => (
-                    <Card key={i} variant="solid" padding="sm">
-                      <div className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[var(--color-primary-solid)] text-white text-xs font-bold flex items-center justify-center">
-                          {i + 1}
-                        </span>
-                        <div className="min-w-0">
-                          <h3 className="font-bold text-sm mb-1">{s.title}</h3>
-                          <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                            {s.body}
-                          </p>
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
+      {/* TAB BAR */}
+      <div className="flex gap-1 border-b border-[var(--color-border-secondary)] mb-6">
+        {TABS.map((t) => (
+          <button
+            key={t.value}
+            onClick={() => setTab(t.value)}
+            className={`
+              px-4 py-2.5 text-sm font-medium
+              rounded-t-[var(--radius-md)]
+              transition-colors duration-180
+              ${
+                tab === t.value
+                  ? "text-[var(--color-primary)] border-b-2 border-[var(--color-primary)] -mb-px"
+                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+              }
+            `}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* CONTENT */}
+      <div className="py-4">
+        {tab === "guide" && (
+          <div className="flex flex-col gap-4">
+            {GUIDE_STEPS.map((s, i) => (
+              <Card key={i} variant="solid" padding="sm">
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[var(--color-primary-solid)] text-white text-xs font-bold flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-sm mb-1">{s.title}</h3>
+                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                      {s.body}
+                    </p>
+                  </div>
                 </div>
-              ),
-            },
-            {
-              label: "قوانین و سیاست‌ها",
-              value: "policy",
-              content: (
-                <div className="pt-6 pb-4">
-                  <Accordion items={POLICY_ITEMS} defaultOpenItems={["p1"]} />
-                </div>
-              ),
-            },
-          ]}
-          defaultValue="guide"
-          glowColor="primary"
-        />
+              </Card>
+            ))}
+          </div>
+        )}
+
+        {tab === "policy" && (
+          <Accordion items={POLICY_ITEMS} defaultOpenItems={["p1"]} />
+        )}
       </div>
     </div>
   );
