@@ -14,8 +14,37 @@ const NAV_LINKS = [
 ];
 
 /* =============================================
-   SOCIAL ICONS
+   ICONS
    ============================================= */
+
+const MoonIcon = () => (
+  <svg
+    className="h-4 w-4"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+  </svg>
+);
+
+const SunIcon = () => (
+  <svg
+    className="h-4 w-4"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="5" />
+    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+  </svg>
+);
 
 const TELEGRAM_ICON = (
   <svg
@@ -29,7 +58,7 @@ const TELEGRAM_ICON = (
 );
 
 /* =============================================
-   THEME HOOK
+   THEME HOOK (controlled — survives navigation)
    ============================================= */
 
 type Theme = "light" | "dark";
@@ -61,39 +90,23 @@ function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const next: Theme = theme === "light" ? "dark" : "light";
 
+  const handleClick = () => {
+    document.body.classList.add("theme-transitioning");
+    setTheme(next);
+    setTimeout(
+      () => document.body.classList.remove("theme-transitioning"),
+      300,
+    );
+  };
+
   return (
     <Button
       size="sm"
       variant="glass"
-      onClick={() => setTheme(next)}
+      onClick={handleClick}
       aria-label={theme === "light" ? "حالت تاریک" : "حالت روشن"}
     >
-      {theme === "light" ? (
-        <svg
-          className="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-      ) : (
-        <svg
-          className="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="5" />
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-        </svg>
-      )}
+      {theme === "light" ? <MoonIcon /> : <SunIcon />}
     </Button>
   );
 }
@@ -105,7 +118,6 @@ function ThemeToggle() {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* NAVBAR — dara ui handles mobile drawer + hamburger internally */}
       <Navbar
         brand={
           <Link
@@ -131,7 +143,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <main className="flex-1 pt-20">{children}</main>
 
-      {/* FLOATING SOCIAL */}
       <SocialMedia
         position="left"
         size="md"
@@ -150,7 +161,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         ]}
       />
 
-      {/* FOOTER */}
       <footer className="border-t border-[var(--color-border-primary)] py-8 px-4 text-center text-sm text-[var(--color-text-tertiary)]">
         © {new Date().getFullYear()} آکادمی رد — تمامی حقوق محفوظ است.
       </footer>
