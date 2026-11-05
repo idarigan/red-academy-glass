@@ -13,6 +13,15 @@ const NAV_LINKS = [
 ];
 
 /* =============================================
+   THEMES (fixed list — no auto-detect reset)
+   ============================================= */
+
+const THEMES = [
+  { value: "light", label: "روشن" },
+  { value: "dark", label: "تاریک" },
+];
+
+/* =============================================
    LAYOUT
    ============================================= */
 
@@ -35,23 +44,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <ThemeChanger
             iconOnly
             size="sm"
-            availableThemes={[
-              { value: "light", label: "روشن" },
-              { value: "dark", label: "تاریک" },
-            ]}
-            defaultValue="light"
+            autoDetect={false}
+            availableThemes={THEMES}
           />
         }
         themeChangerMobile={
           <ThemeChanger
             iconOnly
             size="sm"
-            availableThemes={[
-              { value: "light", label: "روشن" },
-              { value: "dark", label: "تاریک" },
-            ]}
-            defaultValue="light"
             openUpward
+            autoDetect={false}
+            availableThemes={THEMES}
           />
         }
         rightContent={
@@ -65,7 +68,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <main className="flex-1 pt-20">{children}</main>
 
-      {/* FOOTER */}
       <footer className="border-t border-[var(--color-border-primary)] py-8 px-4 text-center text-sm text-[var(--color-text-tertiary)]">
         © {new Date().getFullYear()} آکادمی رد — تمامی حقوق محفوظ است.
       </footer>

@@ -102,45 +102,47 @@ export default function Guide() {
         </p>
       </header>
 
-      {/* TABS */}
-      <Tabs
-        items={[
-          {
-            label: "راهنمای ثبت‌نام",
-            value: "guide",
-            content: (
-              <div className="flex flex-col gap-4 pt-4">
-                {GUIDE_STEPS.map((s, i) => (
-                  <Card key={i} variant="solid" padding="sm">
-                    <div className="flex items-start gap-3">
-                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[var(--color-primary-solid)] text-white text-xs font-bold flex items-center justify-center">
-                        {i + 1}
-                      </span>
-                      <div className="min-w-0">
-                        <h3 className="font-bold text-sm mb-1">{s.title}</h3>
-                        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                          {s.body}
-                        </p>
+      {/* TABS — wrapper carries padding so glows are not clipped */}
+      <div className="px-2 pb-6">
+        <Tabs
+          items={[
+            {
+              label: "راهنمای ثبت‌نام",
+              value: "guide",
+              content: (
+                <div className="flex flex-col gap-6 pt-6 pb-4">
+                  {GUIDE_STEPS.map((s, i) => (
+                    <Card key={i} variant="solid" padding="sm">
+                      <div className="flex items-start gap-3">
+                        <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[var(--color-primary-solid)] text-white text-xs font-bold flex items-center justify-center">
+                          {i + 1}
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="font-bold text-sm mb-1">{s.title}</h3>
+                          <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                            {s.body}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            ),
-          },
-          {
-            label: "قوانین و سیاست‌ها",
-            value: "policy",
-            content: (
-              <div className="pt-4">
-                <Accordion items={POLICY_ITEMS} defaultOpenItems={["p1"]} />
-              </div>
-            ),
-          },
-        ]}
-        defaultValue="guide"
-        glowColor="primary"
-      />
+                    </Card>
+                  ))}
+                </div>
+              ),
+            },
+            {
+              label: "قوانین و سیاست‌ها",
+              value: "policy",
+              content: (
+                <div className="pt-6 pb-4">
+                  <Accordion items={POLICY_ITEMS} defaultOpenItems={["p1"]} />
+                </div>
+              ),
+            },
+          ]}
+          defaultValue="guide"
+          glowColor="primary"
+        />
+      </div>
     </div>
   );
 }
