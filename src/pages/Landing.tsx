@@ -144,35 +144,59 @@ const FAQ = [
 export default function Landing() {
   return (
     <div>
-      {/* ============ HERO ============ */}
-      <section className="max-w-6xl mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28 text-center relative">
-        <Badge variant="primary" glow className="mb-6">
-          <SparkleIcon className="h-3 w-3 me-1" />
-          ثبت‌نام دوره جدید آغاز شد
-        </Badge>
+      {/* ============ HERO (two columns) ============ */}
+      <section className="max-w-6xl mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* TEXT — order 2 on mobile, order 1 on md */}
+          <div className="order-2 md:order-1">
+            <Badge variant="primary" glow className="mb-6">
+              <SparkleIcon className="h-3 w-3 me-1" />
+              ثبت‌نام دوره جدید آغاز شد
+            </Badge>
 
-        <h1 className="font-bold text-4xl md:text-6xl leading-tight mb-5">
-          یادگیری <span className="text-[var(--color-primary)]">حرفه‌ای</span>
-          <br />
-          بدون محدودیت، بدون وقفه
-        </h1>
+            <h1 className="font-bold text-4xl md:text-4xl lg:text-6xl leading-tight mb-5">
+              یادگیری{" "}
+              <span className="text-[var(--color-primary)]">حرفه‌ای</span>
+              <br />
+              بدون محدودیت، بدون وقفه
+            </h1>
 
-        <p className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto mb-8">
-          یک دوره ویدیویی جامع، فصل‌بندی‌شده و همراه با آزمون‌های سنجش دانش — با
-          پشتیبانی مستقیم اساتید و تیم فنی آکادمی رد.
-        </p>
+            <p className="text-[var(--color-text-secondary)] text-base md:text-lg max-w-xl mx-auto md:mx-0 mb-8">
+              یک دوره ویدیویی جامع، فصل‌بندی‌شده و همراه با آزمون‌های سنجش دانش
+              — با پشتیبانی مستقیم اساتید و تیم فنی آکادمی رد.
+            </p>
 
-        <div className="flex flex-wrap gap-3 justify-center">
-          <Link to="/register">
-            <Button size="lg" variant="primary" glow="primary">
-              ثبت‌نام در دوره
-            </Button>
-          </Link>
-          <Link to="/about">
-            <Button size="lg" variant="outline">
-              درباره بیشتر
-            </Button>
-          </Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <Link to="/register" className="block">
+                <Button size="lg" variant="primary" glow="primary" fullWidth>
+                  ثبت‌نام در دوره
+                </Button>
+              </Link>
+              <Link to="/about" className="block">
+                <Button size="lg" variant="outline" fullWidth>
+                  درباره بیشتر
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* IMAGE — order 1 on mobile, order 2 on md */}
+          <div className="order-1 md:order-2 flex justify-center md:justify-end">
+            <Card
+              variant="glass"
+              padding="none"
+              className="overflow-hidden w-full max-w-lg"
+            >
+              <div className="bg-[var(--color-bg-tertiary)] flex items-center justify-center p-8 min-h-[240px]">
+                <img
+                  src="/logo.svg"
+                  alt="پیش‌نمایش دوره آکادمی رد"
+                  className="w-full max-w-[320px] h-auto object-contain"
+                  loading="eager"
+                />
+              </div>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -190,20 +214,6 @@ export default function Landing() {
                 </div>
               </div>
             ))}
-          </div>
-        </Card>
-      </section>
-
-      {/* ============ PREVIEW CARD ============ */}
-      <section className="max-w-4xl mx-auto px-4 pb-20">
-        <Card variant="glass" padding="none" className="overflow-hidden">
-          <div className="aspect-video bg-[var(--color-bg-tertiary)] flex items-center justify-center relative">
-            <div className="flex flex-col items-center gap-3 text-[var(--color-text-tertiary)]">
-              <div className="w-16 h-16 rounded-full bg-[var(--color-primary-solid)] text-white flex items-center justify-center shadow-[var(--shadow-glow-primary)]">
-                <PlayIcon className="h-7 w-7 ms-0.5" />
-              </div>
-              <span className="text-sm">پیش‌نمایش دوره</span>
-            </div>
           </div>
         </Card>
       </section>
