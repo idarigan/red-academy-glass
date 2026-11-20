@@ -16,56 +16,56 @@ import {
    ============================================= */
 
 const STATS = [
-  { value: "+۱۲۰۰", label: "دانشجوی فعال" },
-  { value: "+۴۵", label: "ساعت ویدیو" },
-  { value: "۹۴٪", label: "رضایت دانشجویان" },
-  { value: "۲۴/۷", label: "پشتیبانی" },
+  { value: "+۱۲۰", label: "دانشجوی فعال" },
+  { value: "+۴۵", label: "ساعت دوره" },
+  { value: "۹۴٪", label: "اجرای پروژه" },
+  { value: "۵", label: "روز در هفته پشتیبانی" },
 ];
 
 const FEATURES = [
   {
     icon: <PlayIcon className="h-6 w-6" />,
-    title: "ویدیوی فصل‌بندی‌شده",
-    body: "هر فصل شامل چندین ویدیو با موضوع مستقل است تا با سرعت خودتان یاد بگیرید.",
+    title: "آموزش ویدیویی قدم به قدم",
+    body: "هر فصل شامل چندین ویدیو با موضوع مستقله تا با سرعت خودت یاد بگیری.",
   },
   {
     icon: <CheckIcon className="h-6 w-6" />,
-    title: "آزمون پس از هر فصل",
-    body: "برای عبور به فصل بعد باید حداقل ۷۰٪ نمره آزمون را کسب کنید.",
+    title: "ماموریت آخر فصل",
+    body: "برای عبور به فصل بعد باید حداقل ۷۰ امتیاز از فصل قبلیش بگیری.",
   },
   {
     icon: <ClockIcon className="h-6 w-6" />,
-    title: "دسترسی دائمی",
-    body: "پس از خرید، هر زمان بخواهید به تمام محتوای دوره دسترسی دارید.",
+    title: "دسترسی بلند مدت",
+    body: "عجله نکن! تا یک سال بعد از ثبت‌نام، هر زمان و هرجا که خواستی میتونی آموزشتو دنبال کنی.",
   },
   {
     icon: <ShieldIcon className="h-6 w-6" />,
     title: "تایید پرداخت امن",
-    body: "تیم پشتیبانی هر تراکنش را بررسی و کمتر از ۲۴ ساعت تایید می‌کند.",
+    body: "تیم پشتیبانی هر تراکنش رو بررسی و کمتر از ۲۴ ساعت تایید میکنه.",
   },
   {
     icon: <ChartIcon className="h-6 w-6" />,
-    title: "پیگیری پیشرفت",
-    body: "درصد تکمیل هر فصل و نمرات آزمون شما همیشه در دسترس است.",
+    title: "ببین چیکار کردی",
+    body: "میتونی همیشه ببینی چه چیز هایی یادگرفتی و چقدر امتیاز داری.",
   },
   {
     icon: <UsersIcon className="h-6 w-6" />,
-    title: "پشتیبانی مستقیم",
-    body: "سوالات خود را از طریق صفحه تماس بپرسید — پاسخ از تیم فنی است.",
+    title: "همراهی و پشتیبانی",
+    body: "برای ماموریت‌ها و تمرین‌های دوره میتونی با تیم پشتیبانی ارتباط بگیری😘",
   },
 ];
 
 const CHAPTERS = [
-  { title: "فصل اول — مبانی", lessons: 8, minutes: 95, done: true },
-  { title: "فصل دوم — ابزارها", lessons: 10, minutes: 120, done: true },
-  { title: "فصل سوم — پروژه عملی", lessons: 12, minutes: 180, done: false },
-  { title: "فصل چهارم — پیشرفته", lessons: 9, minutes: 140, done: false },
-  { title: "فصل پنجم — جمع‌بندی", lessons: 5, minutes: 60, done: false },
+  { title: "فصل اول - مبانی", lessons: 8, minutes: 95, done: true },
+  { title: "فصل دوم - ابزارها", lessons: 10, minutes: 120, done: true },
+  { title: "فصل سوم - پروژه عملی", lessons: 12, minutes: 180, done: false },
+  { title: "فصل چهارم - پیشرفته", lessons: 9, minutes: 140, done: false },
+  { title: "فصل پنجم - جمع‌بندی", lessons: 5, minutes: 60, done: false },
 ];
 
 const TESTIMONIALS = [
   {
-    name: "علی رضایی",
+    name: "مرتضی",
     role: "توسعه‌دهنده فرانت‌اند",
     quote:
       "بعد از این دوره تونستم اولین پروژه واقعی رو با اعتماد به نفس کامل تحویل بدم. ساختار فصل‌ها واقعاً حرفه‌ای چیده شده.",
@@ -120,8 +120,7 @@ const FAQ = [
     title: "مدت زمان دسترسی به دوره چقدره؟",
     content: (
       <p className="text-sm text-[var(--color-text-secondary)]">
-        دسترسی دائمیه. یک بار خرید کنید، برای همیشه به تمام محتوا دسترسی خواهید
-        داشت.
+        از زمان ثبت‌نام تا یک سال به تمام محتوای دوره دسترسی خواهید داشت.
       </p>
     ),
   },
@@ -147,40 +146,46 @@ export default function Landing() {
       {/* ============ HERO (two columns) ============ */}
       <section className="max-w-6xl mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* TEXT — order 2 on mobile, order 1 on md */}
-          <div className="order-2 md:order-1">
+          {/* TEXT - order 2 on mobile, order 1 on md */}
+          <div className="order-2 md:order-1 text-center">
             <Badge variant="primary" glow className="mb-6">
-              <SparkleIcon className="h-3 w-3 me-1" />
-              ثبت‌نام دوره جدید آغاز شد
+              میتونی همین حالا ثبت نام کنی
+              <SparkleIcon className="h-3 w-3 ms-1" />
             </Badge>
 
             <h1 className="font-bold text-4xl md:text-4xl lg:text-6xl leading-tight mb-5">
-              یادگیری{" "}
-              <span className="text-[var(--color-primary)]">حرفه‌ای</span>
-              <br />
-              بدون محدودیت، بدون وقفه
+              یادبگیر، خلق کن <br />
+              <span className="text-[var(--color-primary)]">
+                جلو تر از بقیه باش!
+              </span>
             </h1>
 
-            <p className="text-[var(--color-text-secondary)] text-base md:text-lg max-w-xl mx-auto md:mx-0 mb-8">
-              یک دوره ویدیویی جامع، فصل‌بندی‌شده و همراه با آزمون‌های سنجش دانش
-              — با پشتیبانی مستقیم اساتید و تیم فنی آکادمی رد.
+            <p className="text-[var(--color-text-secondary)] text-base md:text-lg max-w-xl max-md:mx-auto mb-8">
+              یک دوره ویدیویی جامع، فصل‌بندی‌شده و همراه با ماموریت های جذاب و
+              پشتیبانی مستقیم اساتید و تیم فنی آکدمی رد.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <Link to="/register" className="block">
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              <Link
+                to="/register"
+                className="w-full md:w-[calc(50%-0.375rem)] lg:w-auto"
+              >
                 <Button size="lg" variant="primary" glow="primary" fullWidth>
-                  ثبت‌نام در دوره
+                  شروع یادگیری
                 </Button>
               </Link>
-              <Link to="/about" className="block">
+              <Link
+                to="/about"
+                className="w-full md:w-[calc(50%-0.375rem)] lg:w-auto"
+              >
                 <Button size="lg" variant="outline" fullWidth>
-                  درباره بیشتر
+                  آشنایی با رد آکادمی
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* IMAGE — order 1 on mobile, order 2 on md */}
+          {/* IMAGE */}
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
             <Card
               variant="glass"
@@ -223,7 +228,7 @@ export default function Landing() {
         <div className="text-center mb-10">
           <h2 className="font-bold text-3xl mb-2">چرا آکادمی رد؟</h2>
           <p className="text-[var(--color-text-secondary)] max-w-xl mx-auto">
-            تجربه‌ای ساختارمند که یادگیری را واقعی و قابل اندازه‌گیری می‌کند.
+            هم تماشا کن و یادبگیر، هم از چیزی که یادگرفتی استفاده کن.
           </p>
         </div>
 
@@ -247,7 +252,7 @@ export default function Landing() {
         <div className="text-center mb-10">
           <h2 className="font-bold text-3xl mb-2">سرفصل‌های دوره</h2>
           <p className="text-[var(--color-text-secondary)]">
-            مسیر یادگیری شما از مبانی تا پروژه عملی.
+            مسیر یادگیریت از اول تا آخرش.
           </p>
         </div>
 
@@ -291,9 +296,9 @@ export default function Landing() {
       {/* ============ TESTIMONIALS ============ */}
       <section className="max-w-6xl mx-auto px-4 pb-20">
         <div className="text-center mb-10">
-          <h2 className="font-bold text-3xl mb-2">دانشجویان ما چه می‌گویند</h2>
+          <h2 className="font-bold text-3xl mb-2">دانشجو های ما چی میگن؟</h2>
           <p className="text-[var(--color-text-secondary)]">
-            تجربه واقعی کسانی که دوره را کامل کرده‌اند.
+            تجربه کسایی که تو دوره بودن.
           </p>
         </div>
 

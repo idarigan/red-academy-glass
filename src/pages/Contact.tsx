@@ -134,7 +134,7 @@ export default function Contact() {
           <Card variant="solid">
             <h3 className="font-bold mb-2">ساعات پاسخگویی</h3>
             <p className="text-sm text-[var(--color-text-secondary)]">
-              شنبه تا چهارشنبه، ۹ صبح تا ۶ عصر
+              شنبه تا چهارشنبه، ۱۱ صبح تا ۸ شب
             </p>
           </Card>
           <Card variant="outline">

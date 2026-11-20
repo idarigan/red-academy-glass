@@ -19,7 +19,7 @@ const SECTIONS = [
   },
   {
     title: "پشتیبانی و ارتباط",
-    body: "تیم پشتیبانی آکادمی رد از طریق صفحه تماس با ما، در تمام روزهای کاری پاسخگوی سوالات شماست. برای سوالات فنی نیز می‌توانید از همین مسیر استفاده کنید.",
+    body: "پشتیبانی آکادمی رد به صورت متنی (چت‌بات و تیکت) و از شنبه تا چهارشنبه، ساعت ۱۱ صبح تا ۸ شب در چارچوب مأموریت‌ها و تمرینات دوره ارائه می‌شود. برای ارتباط با ما می‌توانید از صفحه تماس با ما استفاده کنید.",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function About() {
       {/* CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {SECTIONS.map((s, i) => (
-          <Card key={i} glow="primary" float>
+          <Card key={i} glow="accent" float>
             <h2 className="font-bold text-lg mb-2">{s.title}</h2>
             <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
               {s.body}
