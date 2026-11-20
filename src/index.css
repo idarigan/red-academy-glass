@@ -5,6 +5,18 @@
    RED ACADEMY THEME (light / dark only)
    ============================================= */
 
+:root {
+  --color-primary: #e11d2e;
+  --color-primary-light: #fde8ea;
+
+  /* dara-ui glow tokens — map library variables to Red Academy red */
+  --dara-glow-primary: var(--color-primary);
+  --dara-glow-accent: var(--color-primary);
+  --dara-color-primary: var(--color-primary);
+  --dara-color-primary-light: var(--color-primary-light);
+  --dara-primary-rgb: 225, 29, 46;
+}
+
 :root,
 [data-theme="light"] {
   --color-bg-primary: #ffffff;
@@ -24,6 +36,11 @@
   --color-primary-hover: #b80927;
   --color-primary-active: #9e0821;
   --color-primary-light: rgba(210, 10, 46, 0.1);
+
+  /* dara-ui glow tokens for light mode */
+  --dara-glow-primary: var(--color-primary);
+  --dara-glow-accent: var(--color-primary);
+  --dara-primary-rgb: 210, 10, 46;
 
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(0, 0, 0, 0.06);
@@ -47,6 +64,11 @@
   --color-primary-hover: #e0143a;
   --color-primary-active: #b80927;
   --color-primary-light: rgba(240, 52, 86, 0.12);
+
+  /* dara-ui glow tokens for dark mode */
+  --dara-glow-primary: var(--color-primary);
+  --dara-glow-accent: var(--color-primary);
+  --dara-primary-rgb: 240, 52, 86;
 
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
