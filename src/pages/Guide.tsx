@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Card, Accordion } from "dara-ui";
+import { Tabs, Card, Accordion } from "dara-ui";
 
 /* =============================================
    CONTENT DATA
@@ -31,79 +30,74 @@ const GUIDE_STEPS = [
 const POLICY_ITEMS = [
   {
     id: "p1",
-    title: "شرایط استرداد وجه",
+    title: "ماهیت دوره و مدت دسترسی",
     content: (
       <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
-        در صورتی که کمتر از ۲۴ ساعت از تایید پرداخت گذشته باشد و هنوز وارد
-        محتوای دوره نشده باشید، وجه به طور کامل بازگردانده می‌شود. پس از دسترسی
-        به محتوا، استرداد امکان‌پذیر نیست.
+        با خرید این دوره، به محتواهای از پیش‌ضبط‌شده دسترسی پیدا می‌کنید. اعتبار
+        دسترسی شما به دوره به مدت ۱ سال از زمان ثبت‌نام خواهد بود.
       </p>
     ),
   },
   {
     id: "p2",
-    title: "قوانین استفاده از محتوا",
+    title: "شرایط بازگشت وجه و تسویه",
     content: (
       <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
-        تمام ویدیوها و مطالب دوره متعلق به آکادمی رد است. دانلود، تکثیر یا
-        انتشار غیرمجاز محتوا پیگرد قانونی دارد و منجر به مسدودسازی دائمی حساب
-        کاربری خواهد شد.
+        با توجه به ماهیت دیجیتال محصول، امکان بازگشت وجه پس از خرید وجود ندارد.
+        همچنین، شرط ورود به دوره کارآموزی، تسویه کامل شهریه دوره آموزشی است.
       </p>
     ),
   },
   {
     id: "p3",
-    title: "سیاست حفظ حریم خصوصی",
+    title: "مالکیت معنوی و حساب کاربری",
     content: (
       <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
-        اطلاعات شخصی شما فقط برای احراز هویت، پشتیبانی و ارسال اعلانات دوره
-        استفاده می‌شود و در اختیار هیچ شخص ثالثی قرار نمی‌گیرد. تصویر رسید
-        پرداخت پس از تایید، حذف می‌شود.
+        هرگونه کپی‌برداری، ضبط یا انتشار غیرمجاز محتوای دوره پیگرد قانونی دارد.
+        اشتراک‌گذاری حساب کاربری با دیگران اکیداً ممنوع است و در صورت مشاهده،
+        دسترسی کاربر مسدود خواهد شد.
       </p>
     ),
   },
   {
     id: "p4",
-    title: "شرایط آزمون‌ها",
+    title: "نحوه و زمان پشتیبانی",
     content: (
       <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
-        حداقل نمره قبولی در هر آزمون ۷۰٪ است. در صورت عدم کسب نمره لازم،
-        می‌توانید ویدیوهای فصل را دوباره تماشا کنید و در آزمون مجدد شرکت کنید.
-        هیچ محدودیتی در تعداد تلاش وجود ندارد.
+        پشتیبانی کاملاً به صورت متنی (چت‌بات و تیکت) است و تماس تلفنی وجود
+        ندارد. زمان پاسخگویی شنبه تا چهارشنبه از ساعت ۱۱ صبح تا ۸ شب می‌باشد و
+        صرفاً در چارچوب گذراندن مأموریت‌ها و بررسی تمرینات دوره ارائه می‌شود.
       </p>
     ),
   },
   {
     id: "p5",
-    title: "قوانین ارتباط با پشتیبانی",
+    title: "سلب مسئولیت کلی",
     content: (
       <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
-        برای پیگیری پرداخت، حتماً شماره تراکنش یا تصویر رسید را همراه داشته
-        باشید. تیم پشتیبانی فقط از طریق ایمیل رسمی آکادمی پاسخ می‌دهد؛ به
-        درخواست‌های خارج از این مسیر ترتیب اثر داده نمی‌شود.
+        آکادمی و مدرسین هیچ‌گونه مسئولیتی در قبال خسارات مستقیم، غیرمستقیم،
+        اتفاقی یا تبعی ناشی از استفاده از پلتفرم، محتواها یا ابزارهای معرفی‌شده
+        ندارند.
+      </p>
+    ),
+  },
+  {
+    id: "p6",
+    title: "عدم تضمین دسترسی مداوم",
+    content: (
+      <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+        پلتفرم تعهدی برای دسترسی بدون وقفه ندارد و ممکن است به دلایل فنی،
+        به‌روزرسانی یا موارد اضطراری، دسترسی موقتاً قطع شود.
       </p>
     ),
   },
 ];
 
 /* =============================================
-   TAB BUTTON
-   ============================================= */
-
-const TABS = [
-  { value: "guide", label: "راهنمای ثبت‌نام" },
-  { value: "policy", label: "قوانین و سیاست‌ها" },
-] as const;
-
-type TabValue = (typeof TABS)[number]["value"];
-
-/* =============================================
    PAGE
    ============================================= */
 
 export default function Guide() {
-  const [tab, setTab] = useState<TabValue>("guide");
-
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
       {/* HEADER */}
@@ -116,54 +110,45 @@ export default function Guide() {
         </p>
       </header>
 
-      {/* TAB BAR */}
-      <div className="flex gap-1 border-b border-[var(--color-border-secondary)] mb-6">
-        {TABS.map((t) => (
-          <button
-            key={t.value}
-            onClick={() => setTab(t.value)}
-            className={`
-              px-4 py-2.5 text-sm font-medium
-              rounded-t-[var(--radius-md)]
-              transition-colors duration-180
-              ${
-                tab === t.value
-                  ? "text-[var(--color-primary)] border-b-2 border-[var(--color-primary)] -mb-px"
-                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
-              }
-            `}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
-      {/* CONTENT */}
-      <div className="py-4">
-        {tab === "guide" && (
-          <div className="flex flex-col gap-4">
-            {GUIDE_STEPS.map((s, i) => (
-              <Card key={i} variant="solid" padding="sm">
-                <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[var(--color-primary-solid)] text-white text-xs font-bold flex items-center justify-center">
-                    {i + 1}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="font-bold text-sm mb-1">{s.title}</h3>
-                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                      {s.body}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        )}
-
-        {tab === "policy" && (
-          <Accordion items={POLICY_ITEMS} defaultOpenItems={["p1"]} />
-        )}
-      </div>
+      {/* TABS */}
+      <Tabs
+        items={[
+          {
+            label: "راهنمای ثبت‌نام",
+            value: "guide",
+            content: (
+              <div className="flex flex-col gap-4 px-8 pb-4">
+                {GUIDE_STEPS.map((s, i) => (
+                  <Card key={i} variant="solid" padding="sm">
+                    <div className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[var(--color-primary-solid)] text-white text-xs font-bold flex items-center justify-center">
+                        {i + 1}
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="font-bold text-sm mb-1">{s.title}</h3>
+                        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                          {s.body}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            ),
+          },
+          {
+            label: "قوانین و سیاست‌ها",
+            value: "policy",
+            content: (
+              <div className="px-8 pb-4">
+                <Accordion items={POLICY_ITEMS} defaultOpenItems={["p1"]} />
+              </div>
+            ),
+          },
+        ]}
+        defaultValue="guide"
+        glowColor="primary"
+      />
     </div>
   );
 }
