@@ -5,18 +5,6 @@
    RED ACADEMY THEME (light / dark only)
    ============================================= */
 
-:root {
-  --color-primary: #e11d2e;
-  --color-primary-light: #fde8ea;
-
-  /* dara-ui glow tokens — map library variables to Red Academy red */
-  --dara-glow-primary: var(--color-primary);
-  --dara-glow-accent: var(--color-primary);
-  --dara-color-primary: var(--color-primary);
-  --dara-color-primary-light: var(--color-primary-light);
-  --dara-primary-rgb: 225, 29, 46;
-}
-
 :root,
 [data-theme="light"] {
   --color-bg-primary: #ffffff;
@@ -37,10 +25,9 @@
   --color-primary-active: #9e0821;
   --color-primary-light: rgba(210, 10, 46, 0.1);
 
-  /* dara-ui glow tokens for light mode */
-  --dara-glow-primary: var(--color-primary);
-  --dara-glow-accent: var(--color-primary);
-  --dara-primary-rgb: 210, 10, 46;
+  --shadow-btn-primary: 0 4px 20px rgba(210, 10, 46, 0.3);
+  --shadow-btn-primary-hover: 0 6px 32px rgba(210, 10, 46, 0.45);
+  --shadow-glow-primary: 0 0 40px rgba(210, 10, 46, 0.25);
 
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(0, 0, 0, 0.06);
@@ -65,10 +52,9 @@
   --color-primary-active: #b80927;
   --color-primary-light: rgba(240, 52, 86, 0.12);
 
-  /* dara-ui glow tokens for dark mode */
-  --dara-glow-primary: var(--color-primary);
-  --dara-glow-accent: var(--color-primary);
-  --dara-primary-rgb: 240, 52, 86;
+  --shadow-btn-primary: 0 4px 20px rgba(210, 10, 46, 0.4);
+  --shadow-btn-primary-hover: 0 6px 32px rgba(240, 52, 86, 0.5);
+  --shadow-glow-primary: 0 0 40px rgba(240, 52, 86, 0.3);
 
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
@@ -86,4 +72,12 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: Vazirmatn, Tahoma, sans-serif;
+}
+
+/* =============================================
+   FOCUS RING
+   ============================================= */
+
+[role="tab"]:focus-visible {
+  --tw-ring-color: var(--color-primary) !important;
 }
