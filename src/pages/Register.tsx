@@ -193,7 +193,7 @@ export default function Register() {
             dir="ltr"
             validation={errors.phone ? "error" : undefined}
             errorMessage={errors.phone}
-            leftIcon={<span className="text-sm">📱</span>}
+            leftIcon={<span className="text-sm"></span>}
           />
 
           <Input
@@ -230,7 +230,7 @@ export default function Register() {
           {!otpVerified && (
             <Button
               type="button"
-              variant="secondary"
+              variant="primary"
               loading={sendingOtp}
               disabled={sendingOtp || otpSent}
               onClick={sendOtp}
@@ -304,7 +304,7 @@ export default function Register() {
                 loading={submitting}
                 disabled={submitting}
                 fullWidth
-                glow="primary"
+                glow="accent"
               >
                 تکمیل ثبت‌نام
               </Button>

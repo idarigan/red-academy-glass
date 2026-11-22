@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { ToastProvider, I18nProvider } from "dara-ui";
+import { ToastProvider, I18nProvider, Topography } from "dara-ui";
 import Layout from "./components/Layout";
 import Landing from "./pages/Landing";
 import About from "./pages/About";
@@ -21,18 +21,21 @@ const fa = {
 
 export default function App() {
   return (
-    <ToastProvider>
-      <I18nProvider translations={{ fa }} defaultLanguage="fa">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/guide" element={<Guide />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </Layout>
-      </I18nProvider>
-    </ToastProvider>
+    <>
+      <ToastProvider>
+        <I18nProvider translations={{ fa }} defaultLanguage="fa">
+          <Topography lineCount={5} opacity={0.5} />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/guide" element={<Guide />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </Layout>
+        </I18nProvider>
+      </ToastProvider>
+    </>
   );
 }

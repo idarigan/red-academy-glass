@@ -58,7 +58,7 @@ const TELEGRAM_ICON = (
 );
 
 /* =============================================
-   THEME HOOK (controlled — survives navigation)
+   THEME HOOK (controlled - survives navigation)
    ============================================= */
 
 type Theme = "light" | "dark";
@@ -120,11 +120,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen flex flex-col">
       <Navbar
         brand={
-          <Link
-            to="/"
-            className="font-bold text-lg text-[var(--color-primary)] no-underline"
-          >
-            آکادمی رد
+          <Link to="/" className="flex items-center no-underline">
+            <img src="/logo.svg" alt="آکادمی رد" className="h-8 w-auto" />
           </Link>
         }
         links={NAV_LINKS}
@@ -162,7 +159,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       />
 
       <footer className="border-t border-[var(--color-border-primary)] py-8 px-4 text-center text-sm text-[var(--color-text-tertiary)]">
-        © {new Date().getFullYear()} آکادمی رد — تمامی حقوق محفوظ است.
+        © {new Date().getFullYear()} آکادمی رد - تمامی حقوق محفوظ است.
       </footer>
     </div>
   );

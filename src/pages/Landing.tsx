@@ -56,11 +56,19 @@ const FEATURES = [
 ];
 
 const CHAPTERS = [
-  { title: "فصل اول - مبانی", lessons: 8, minutes: 95, done: true },
-  { title: "فصل دوم - ابزارها", lessons: 10, minutes: 120, done: true },
-  { title: "فصل سوم - پروژه عملی", lessons: 12, minutes: 180, done: false },
-  { title: "فصل چهارم - پیشرفته", lessons: 9, minutes: 140, done: false },
-  { title: "فصل پنجم - جمع‌بندی", lessons: 5, minutes: 60, done: false },
+  { title: "بخش اول - ابزار ها", lessons: 4, minutes: 19, done: true },
+  { title: "بخش دوم - مهندسی پرامپت", lessons: 3, minutes: 15, done: true },
+  { title: "بخش سوم - طراحی کاراکتر", lessons: 3, minutes: 20, done: false },
+  {
+    title: "بخش چهارم - طراحی لوگو و بنر",
+    lessons: 4,
+    minutes: 15,
+    done: false,
+  },
+  { title: "بخش پنجم - ساخت ویدیو", lessons: 5, minutes: 30, done: false },
+  { title: "بخش شیشم - ادیت", lessons: 2, minutes: 15, done: false },
+  { title: "بخش ", lessons: , minutes: , done: false },
+  { title: "بخش ", lessons: , minutes: , done: false },
 ];
 
 const TESTIMONIALS = [
@@ -147,7 +155,7 @@ export default function Landing() {
       <section className="max-w-6xl mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* TEXT - order 2 on mobile, order 1 on md */}
-          <div className="order-2 md:order-1 text-center">
+          <div className="order-2 md:order-1 max-md:text-center">
             <Badge variant="primary" glow className="mb-6">
               میتونی همین حالا ثبت نام کنی
               <SparkleIcon className="h-3 w-3 ms-1" />
@@ -165,7 +173,7 @@ export default function Landing() {
               پشتیبانی مستقیم اساتید و تیم فنی آکدمی رد.
             </p>
 
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+            <div className="flex max-sm:flex-wrap gap-3 justify-center md:justify-start">
               <Link
                 to="/register"
                 className="w-full md:w-[calc(50%-0.375rem)] lg:w-auto"
@@ -208,7 +216,7 @@ export default function Landing() {
       {/* ============ STATS BAR ============ */}
       <section className="max-w-6xl mx-auto px-4 pb-20">
         <Card variant="glass" padding="lg">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {STATS.map((s, i) => (
               <div key={i}>
                 <div className="font-bold text-3xl text-[var(--color-primary)] mb-1">

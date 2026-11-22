@@ -85,7 +85,6 @@ export default function ReceiptUpload({ file, onChange, error }: Props) {
           </div>
         ) : (
           <div className="flex flex-col items-center gap-1 text-[var(--color-text-tertiary)]">
-            <span className="text-3xl">📎</span>
             <span className="text-sm">
               فایل رسید را انتخاب یا اینجا رها کنید
             </span>
